@@ -15,28 +15,28 @@ const help = (prefix) => {
 ┣⊱ *${prefix}phlogo*
 ┣⊱ *${prefix}quotemaker*
 ┣⊱ *${prefix}ninjalogo*
+┣⊱ *${prefix}wolflogo*
+┣⊱ *${prefix}lionlogo*
 ┣⊱ *${prefix}glitch*
 ┣⊱ *${prefix}text3d*
+┣━━❀ *Random Picture* ❀━━
+┣⊱ *${prefix}meme*
+┣⊱ *${prefix}memeindo*
+┣⊱ *${prefix}randomloli*
+┣⊱ *${prefix}randomneko*
+┣⊱ *${prefix}randomanime*
+┣⊱ *${prefix}randompokemon*
+┣⊱ *${prefix}randomcars*
+┣⊱ *${prefix}randomanjing*
+┣⊱ *${prefix}randomkucing*
+┣⊱ *${prefix}randomaesthetic*
 ┣━━❀ *Kerang ajaib* ❀━
 ┣⊱ *${prefix}kapankah*
 ┣⊱ *${prefix}apakah*
 ┣⊱ *${prefix}bisakah*
 ┣⊱ *${prefix}rate*
-┣━━❀ *Fun* ❀━━━━
-┣⊱ *${prefix}meme*
-┣⊱ *${prefix}memeindo*
-┣⊱ *${prefix}hilih*
-┣⊱ *${prefix}fitnah*
-┣⊱ *${prefix}truth*
-┣⊱ *${prefix}dare*
-┣⊱ *${prefix}bucin*
-┣⊱ *${prefix}persengay*
 ┣━━❀ *Anime* ❀━━
-┣⊱ *${prefix}loli*
 ┣⊱ *${prefix}nsfwloli*
-┣⊱ *${prefix}anime*
-┣⊱ *${prefix}randomanime*
-┣⊱ *${prefix}randomhentai*
 ┣⊱ *${prefix}nsfwloli*
 ┣⊱ *${prefix}nsfwblowjob*
 ┣⊱ *${prefix}nsfwneko*
@@ -52,17 +52,17 @@ const help = (prefix) => {
 ┣⊱ *${prefix}kbbi*
 ┣⊱ *${prefix}artinama*
 ┣⊱ *${prefix}infogempa*
+┣⊱ *${prefix}hilih*
+┣⊱ *${prefix}bucin*
+┣⊱ *${prefix}persengay*
 ┣⊱ *${prefix}quotes*
 ┣⊱ *${prefix}cerpen*
+┣⊱ *${prefix}truth*
+┣⊱ *${prefix}dare*
 ┣⊱ *${prefix}lirik*
-┣⊱ *${prefix}pokemon*
 ┣⊱ *${prefix}chord*
-┣⊱ *${prefix}blocklist*
 ┣⊱ *${prefix}hidetag*
-┣⊱ *${prefix}wolflogo*
-┣⊱ *${prefix}lionlogo*
 ┣⊱ *${prefix}ssweb*
-┣⊱ *${prefix}anjing*
 ┣⊱ *${prefix}indohot*
 ┣━━❀ *Group* ❀━━
 ┣⊱ *${prefix}linkgc*
@@ -71,13 +71,14 @@ const help = (prefix) => {
 ┣⊱ *${prefix}group* [buka/tutup]
 ┣⊱ *${prefix}demote* [tag]
 ┣⊱ *${prefix}promote* [tag]
-┣⊱ *${prefix}kick*
+┣⊱ *${prefix}kick* [62xx]
 ┣⊱ *${prefix}listadmin*
 ┣⊱ *${prefix}simih* [1/0]
 ┣⊱ *${prefix}nsfw* [1/0]
 ┣⊱ *${prefix}welcome* [1/0]
 ┣━━❀ *Owner bot* ❀━
 ┣⊱ *${prefix}clearall*
+┣⊱ *${prefix}blocklist*
 ┣⊱ *${prefix}block*
 ┣⊱ *${prefix}unblock*
 ┣⊱ *${prefix}bc*
