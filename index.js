@@ -106,7 +106,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `Hallo @${num.split('@')[0]}\Selamat datang di group *${mdata.subject}* Semoga betah ya di sini`
+				teks = `*Hallo* 👋 @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*\nSemoga betah ya di sini`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -116,7 +116,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `*Titip salam yah kak* @${num.split('@')[0]} *I will miss you* 🤭`
+				teks = `*Titip salam yah kak* @${num.split('@')[0]}\n*I will miss you* 🤭`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			}
@@ -320,7 +320,7 @@ client.on('group-participants-update', async (anu) => {
 					var gh = body.slice(9)
 					var gbl1 = gh.split("|")[0];
 					var gbl2 = gh.split("|")[1];
-					if (args.length < 1) return reply('Teksnya mana um')
+					if (args.length < 1) return reply('Teksnya mana kak?')
 					reply(mess.wait)
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/textpro?theme=pornhub&text1=${gbl1}&text2=${gbl2}`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
@@ -381,7 +381,7 @@ client.on('group-participants-update', async (anu) => {
                 case 'lirik':
 					teks = body.slice(7)
 					anu = await fetchJson(`http://scrap.terhambar.com/lirik?word=${teks}`, {method: 'get'})
-					reply('Lirik dari lagu '+teks+' adalah :\n\n'+anu.result.lirik)
+					reply('*Lirik lagu* 🎶 '+teks+' 🎶 :\n\n'+anu.result.lirik)
 					break
 				case 'anime':
 					teks = body.slice(7)
@@ -398,7 +398,7 @@ client.on('group-participants-update', async (anu) => {
                          contextInfo: {mentionedJid: [nomor]},
                      }
                     client.sendMessage('62895330379186@s.whatsapp.net', options, text, {quoted: mek})
-                    reply('Masalah telah di laporkan ke owner BOT, laporan palsu/main2 tidak akan ditanggapi.')
+                    reply('Masalah telah di laporkan ke owner AINEBOT\nLaporan palsu atau main² tidak akan ditanggapi.')
                     break
                 case 'ssweb':
 					if (args.length < 1) return reply('Urlnya mana kak?')
@@ -410,19 +410,9 @@ client.on('group-participants-update', async (anu) => {
 					break
                 case 'nekonime':
 				    try {
-						res = await fetchJson(`https://tobz-api.herokuapp.com/api/nekonime`, {method: 'get'})
+						res = await fetchJson(`https://arugaz.herokuapp.com/api/nekonime`, {method: 'get'})
 						buffer = await getBuffer(res.result)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ingat! Cintai nekonime'})
-					} catch (e) {
-						console.log(`Error :`, color(e,'red'))
-						reply(' *ERROR* ')
-					}
-					break
-                case 'randomanime':
-				    try {
-						res = await fetchJson(`https://tobz-api.herokuapp.com/api/randomanime`, {method: 'get'})
-						buffer = await getBuffer(res.result)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Nih kak randomanime!'})
 					} catch (e) {
 						console.log(`Error :`, color(e,'red'))
 						reply(' *ERROR* ')
@@ -510,10 +500,10 @@ client.on('group-participants-update', async (anu) => {
 					reply(anu.result)
 					break
                 case 'infogempa':
-                   anu = await fetchJson(`https://tobz-api.herokuapp.com/api/infogempa`, {method: 'get'})
+                   anu = await fetchJson(`https://arugaz.herokuapp.com/api/infogempa`, {method: 'get'})
                    if (anu.error) return reply(anu.error)
                    buff = await getBuffer(anu.map)
-                   hasil = ` *potensi* \n ${anu.potensi} *lokasi* \n${anu.lokasi} *magnitude* \n${anu.magnitude} *koordinat* \n${anu.koordinat} *kedalaman* \n${anu.kedalaman}`
+                   hasil = ` *potensi*\n${anu.potensi}\n*lokasi*\n${anu.lokasi}\n*magnitude*\n${anu.magnitude}\n*koordinat*\n${anu.koordinat}\n*kedalaman*\n${anu.kedalaman}\n*Waktu*\n${anu.waktu}\n*Map*\n${anu.map}`
                    client.sendMessage(from, buff, image, {quoted: mek, caption: hasil})
                    break
                 case 'pokemon':
@@ -526,6 +516,38 @@ client.on('group-participants-update', async (anu) => {
 					break
                 case 'anjing':
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anjing`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+		case 'kucing':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=kucing`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+		case 'randomanime':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=nime`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+		case 'randomcewek':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cewe`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+		case 'randomcowok':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cowok`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
 					var nimek =  n[Math.floor(Math.random() * n.length)];
@@ -780,13 +802,13 @@ client.on('group-participants-update', async (anu) => {
 			       case 'block':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isOwner) return reply(mess.only.ownerB)
-					client.blockUser (`${body.slice(7)}@c.us`, "add")
+					client.blockUser (`${body.slice(7)}`, "add")
 					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝗹𝗼𝗸𝗶𝗿 ${body.slice(7)}@c.us`, text)
 					break
                     case 'unblock':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isOwner) return reply(mess.only.ownerB)
-				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
+				    client.blockUser (`${body.slice(9)}`, "remove")
 					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝘂𝗸𝗮 ${body.slice(9)}@c.us`, text)
 				break
 				case 'leave': 
