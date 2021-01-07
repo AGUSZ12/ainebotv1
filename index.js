@@ -275,7 +275,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
-					teks = `𝗡𝗮𝗺𝗮 𝗯𝗼𝘁 : ${me.name}\n*𝗡𝗼𝗺𝗲𝗿 𝗯𝗼𝘁* : @${me.jid.split('@')[0]}\n*𝗣𝗿𝗲𝗳𝗶𝘅* : ${prefix}\n𝗧𝗼𝘁𝗮𝗹 𝗕𝗹𝗼𝗰𝗸 𝗖𝗼𝗻𝘁𝗮𝗰𝘁 : ${blocked.length}\n𝗧𝗵𝗲 𝗯𝗼𝘁 𝗶𝘀 𝗮𝗰𝘁𝗶𝘃𝗲 𝗼𝗻 : ${kyun(uptime)}\n`
+					teks = `*Owner bot* : Muhammad Ridwan Reynaldy\n*No owner* : wa.me/62895330379186\n*Ig owner* : www.instagram.com/anemio999\n*Nama bot* : ${me.name}\n*Nomor bot* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Total block contact* : ${blocked.length}\n*The bot is active on* : ${kyun(uptime)}\n*Fans page FB* : https://www.facebook.com/ainneboot\n*Ketik* : #laporadmin _Untuk melaporkan admin bot melalui bot_\n*Ketik* : #owner untuk menghubungi admin bot kami.`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
@@ -535,8 +535,8 @@ client.on('group-participants-update', async (anu) => {
 					pok = await getBuffer(nimek)
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
-		case 'randomahentai':
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=hentai`, {method: 'get'})
+		case 'randomneko':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=neko`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
 					var nimek =  n[Math.floor(Math.random() * n.length)];
@@ -553,6 +553,22 @@ client.on('group-participants-update', async (anu) => {
 					break
 		case 'randomcowok':
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cowok`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+		case 'randomcars':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=supercars`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+		case 'randomaesthetic':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=aesthetic`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
 					var nimek =  n[Math.floor(Math.random() * n.length)];
