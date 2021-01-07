@@ -275,7 +275,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
-					teks = `*Owner bot* : Muhammad Ridwan Reynaldy\n*No owner* : wa.me/62895330379186\n*Ig owner* : www.instagram.com/anemio999\n*Nama bot* : ${me.name}\n*Nomor bot* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Total block contact* : ${blocked.length}\n*The bot is active on* : ${kyun(uptime)}\n*Fans page FB* : https://www.facebook.com/ainneboot\n*Ketik* : #laporadmin _Untuk melaporkan admin bot melalui bot_\n*Ketik* : #owner untuk menghubungi admin bot kami.`
+					teks = `*Owner bot* : Muhammad Ridwan Reynaldy\n*No owner* : wa.me/62895330379186\n*Ig owner* : www.instagram.com/anemio999\n*Nama bot* : ${me.name}\n*Nomor bot* : @${me.jid.split('@')[0]}\n*Prefix* : ${prefix}\n*Total block contact* : ${blocked.length}\n*The bot is active on* : ${kyun(uptime)}\n*Fans page FB* : https://www.facebook.com/ainneboot\n*Ketik* : #lapor _Untuk melaporkan admin bot melalui bot_\n*Ketik* : #owner untuk menghubungi admin bot kami.`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
@@ -388,7 +388,7 @@ client.on('group-participants-update', async (anu) => {
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/anime?query=${teks}`, {method: 'get'})
 					reply('anime nya ni '+teks+' adalah :\n\n'+anu.title)
 					break
-                case 'laporadmin':
+                case 'lapor':
                      const pesan = body.slice(5)
                       if (pesan.length > 300) return client.sendMessage(from, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks', msgType.text, {quoted: mek})
                         var nomor = mek.participant
