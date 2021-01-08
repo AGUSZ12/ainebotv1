@@ -652,17 +652,17 @@ client.on('group-participants-update', async (anu) => {
 					tels = body.slice(7)				
 					reply(mess.wait)
 					buffer = await getBuffer(anu.thumb)
-					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/yta?url=${tels}`, {method: 'get'})
-					hasil = `Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*resolution ➼* ${anu.resolution}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
+					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/ytv?url=${tels}`, {method: 'get'})
+					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*resolution ➼* ${anu.resolution}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
 					client.sendMessage(from, buffer, image,  {quoted: mek, caption: hasil})
 					break
                 case 'ytmp3':
 				if (args.length < 1) return reply('link YouTube nya mana?')
 					tels = body.slice(7)				
 					reply(mess.wait)
-					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/ytv?url=${tels}`, {method: 'get'})
+					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/yta?url=${tels}`, {method: 'get'})
 					buffer = await getBuffer(anu.thumb)
-					hasil = `Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
+					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
 					break
                 case 'text3d':
