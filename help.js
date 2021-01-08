@@ -6,11 +6,11 @@ const help = (prefix) => {
 ┣⊱ *${prefix}donasi*
 ┣⊱ *${prefix}info*
 ┣⊱ *${prefix}botstat*
-┣⊱ *${prefix}laporadmin*
+┣⊱ *${prefix}lpr*
 ┣━━❀ *Maker* ❀━━
 ┣⊱ *${prefix}ocr*
 ┣⊱ *${prefix}sticker*
-┣⊱ *${prefix}tts*
+┣⊱ *${prefix}gtts*
 ┣⊱ *${prefix}toimg*
 ┣⊱ *${prefix}phlogo*
 ┣⊱ *${prefix}quotemaker*
@@ -22,29 +22,33 @@ const help = (prefix) => {
 ┣━━❀ *Random Picture* ❀━━
 ┣⊱ *${prefix}meme*
 ┣⊱ *${prefix}memeindo*
-┣⊱ *${prefix}randomloli*
-┣⊱ *${prefix}randomneko*
-┣⊱ *${prefix}randomanime*
-┣⊱ *${prefix}randompokemon*
-┣⊱ *${prefix}randomcars*
-┣⊱ *${prefix}randomanjing*
-┣⊱ *${prefix}randomkucing*
-┣⊱ *${prefix}randomaesthetic*
+┣⊱ *${prefix}waifu*
+┣⊱ *${prefix}rdmloli*
+┣⊱ *${prefix}rdmneko*
+┣⊱ *${prefix}rdmanime*
+┣⊱ *${prefix}rdmpokemon*
+┣⊱ *${prefix}rdmcars*
+┣⊱ *${prefix}rdmmotor*
+┣⊱ *${prefix}rdmcewek*
+┣⊱ *${prefix}rdmcowok*
+┣⊱ *${prefix}rdmbts*
+┣⊱ *${prefix}rdmblackpink*
+┣⊱ *${prefix}rdmcosplayjapan
+┣⊱ *${prefix}rdmanjing*
+┣⊱ *${prefix}rdmkucing*
+┣⊱ *${prefix}rdmkatakata*
+┣⊱ *${prefix}rdmaesthetic*
+┣⊱ *${prefix}rdmquotesID*
+┣⊱ *${prefix}rdmquotesEN*
 ┣━━❀ *Kerang ajaib* ❀━
 ┣⊱ *${prefix}kapankah*
 ┣⊱ *${prefix}apakah*
 ┣⊱ *${prefix}bisakah*
 ┣⊱ *${prefix}rate*
-┣━━❀ *Anime* ❀━━
-┣⊱ *${prefix}nsfwloli*
-┣⊱ *${prefix}nsfwloli*
-┣⊱ *${prefix}nsfwblowjob*
-┣⊱ *${prefix}nsfwneko*
-┣⊱ *${prefix}nsfwtrap*
-┣━━❀ *Media* ❀━━
-┣⊱ *${prefix}tiktokstalk*
+┣━━❀ *Download* ❀━━
 ┣⊱ *${prefix}ytmp4*
-┣━━❀ *Other* ❀━━
+┣⊱ *${prefix}ytmp3*
+┣━━❀ *Features Other* ❀━━
 ┣⊱ *${prefix}ping*
 ┣⊱ *${prefix}shorturl*
 ┣⊱ *${prefix}fototiktok*
@@ -53,6 +57,8 @@ const help = (prefix) => {
 ┣⊱ *${prefix}artinama*
 ┣⊱ *${prefix}infogempa*
 ┣⊱ *${prefix}hilih*
+┣⊱ *${prefix}wiki*
+┣⊱ *${prefix}wikien*
 ┣⊱ *${prefix}bucin*
 ┣⊱ *${prefix}persengay*
 ┣⊱ *${prefix}quotes*
