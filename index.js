@@ -847,13 +847,13 @@ client.on('group-participants-update', async (anu) => {
 				pesan2 = arg.split('|')[2] 
                 costum(pesan, isi, pesan2)
                 break
-                 case 'linkgc':	 
-                if (!isGroup) return reply(mess.only.group)
-				if (!isGroupAdmins) return reply(mess.only.admin) 
-				if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-                 const linkgc = await conn.groupInviteCode (from) 
-                 reply (linkgc)
-                 break 
+                                case 'linkgroup':
+                                        if (!isGroup) return reply(mess.only.group)
+                                        if (!isGroupAdmins) return reply(mess.only.admin)
+                                        if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+                                        linkgc = await client.groupInviteCode(from)
+                                        reply('https://chat.whatsapp.com/'+linkgc)
+                                        break
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
