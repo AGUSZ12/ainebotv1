@@ -847,6 +847,8 @@ client.on('group-participants-update', async (anu) => {
 				pesan2 = arg.split('|')[2] 
                 costum(pesan, isi, pesan2)
                 break
+                                case 'linkgc':
+                                case 'linkgrup':
                                 case 'linkgroup':
                                         if (!isGroup) return reply(mess.only.group)
                                         if (!isGroupAdmins) return reply(mess.only.admin)
@@ -887,11 +889,14 @@ client.on('group-participants-update', async (anu) => {
 				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
 					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝘂𝗸𝗮 ${body.slice(9)}@c.us`, text)
 				break
-				case 'leave': 
-				if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
-				await client.client.leaveGroup(from, '𝗕𝘆𝗲𝗲', groupId)
-                    break
+                              case 'leave':
+                                        if (!isGroup) return reply(mess.only.group)
+                                        if (isGroupAdmins || isOwner) {
+                                            client.groupLeave(from)
+                                        } else {
+                                            reply(mess.only.admin)
+                                        }
+                                        break
 				case 'bc': 
 					if (!isOwner) return reply(' *Anda siapa* ?') 
 					if (args.length < 1) return reply('.......')
