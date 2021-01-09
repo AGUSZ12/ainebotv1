@@ -537,7 +537,7 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
                 case 'rdmcewek':
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cewek`, {method: 'get'})
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cewek-imut`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
 					var nimek =  n[Math.floor(Math.random() * n.length)];
@@ -545,7 +545,7 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
                 case 'rdmcowok':
-					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cowok`, {method: 'get'})
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=cowok-keren`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
 					var nimek =  n[Math.floor(Math.random() * n.length)];
