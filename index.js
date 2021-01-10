@@ -694,6 +694,7 @@ client.on('group-participants-update', async (anu) => {
 					reply('Menurut Kbbi:\n\n'+anu.result)
 					break
                 case 'artinama':
+		case 'nama':
 					if (args.length < 1) return reply('Apa yang mau dicari kak?')
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/arti?nama=${body.slice(10)}`, {method: 'get'})
 					reply('Menurut nama:\n\n'+anu.result)
