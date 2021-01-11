@@ -33,7 +33,7 @@ const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n' 
             + 'FN:Admin Ainebot\n' 
             + 'ORG: Pengembang AINEBOT;\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=6282334297175:+62 823-3429-7175\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=62895330379186:+62 895-3303-79186\n' 
             + 'END:VCARD' 
 prefix = '!'
 blocked = []          
