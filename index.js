@@ -666,12 +666,19 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
 					break
                 case 'text3d':
-              	    if (args.length < 1) return reply('teksnya mana kak?')
-                    teks = `${body.slice(8)}`
-                    if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 10 kalimat', text, {quoted: mek})
-                    buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
-                    client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
-			     	break
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 10 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
+                case 'matrix':
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`arugaz.my.id/api/textpro/matrixtext?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
                 case 'shorturl':
                     anu = await fetchJson(`https://tobz-api.herokuapp.com/api/shorturl?url=${body.slice(10)}`)
 			        hasil = `${anu.result}`
