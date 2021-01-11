@@ -16,8 +16,8 @@ const help = (prefix) => {
 ┣━━❀ *Maker Logo* ❀━━
 ┣⊱ *${prefix}phlogo*
 ┣⊱ *${prefix}text3d*
-┣⊱ *${prefix}glitch*
-┣⊱ *${prefix}wolflogo*
+┣⊱ *${prefix}glitch* ❌
+┣⊱ *${prefix}wolflogo* ❌
 ┣━━❀ *Random Picture Meme* ❀━━
 ┣⊱ *${prefix}meme*
 ┣⊱ *${prefix}memeindo*
@@ -87,8 +87,8 @@ const help = (prefix) => {
 ┣⊱ *${prefix}ytmp4*
 ┣⊱ *${prefix}ytmp3*
 ┣━━❀ *Features Other* ❀━━
-┣⊱ *${prefix}ping*
-┣⊱ *${prefix}shorturl*
+┣⊱ *${prefix}ping* ❌
+┣⊱ *${prefix}shorturl* ❌
 ┣⊱ *${prefix}fototiktok*
 ┣⊱ *${prefix}map*
 ┣⊱ *${prefix}kbbi*
@@ -101,7 +101,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}persengay*
 ┣⊱ *${prefix}quotes*
 ┣⊱ *${prefix}cerpen*
-┣⊱ *${prefix}jodoh*
+┣⊱ *${prefix}jodoh* ❌
 ┣⊱ *${prefix}truth*
 ┣⊱ *${prefix}dare*
 ┣⊱ *${prefix}lirik*
@@ -119,7 +119,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}kick* [@tag]
 ┣⊱ *${prefix}listadmin*
 ┣⊱ *${prefix}simih* [1/0]
-┣⊱ *${prefix}nsfw* [1/0]
+┣⊱ *${prefix}nsfw* [1/0] 
 ┣⊱ *${prefix}welcome* [1/0]
 ┣━━❀ *Owner bot* ❀━
 ┣⊱ *${prefix}clearall*
@@ -134,7 +134,6 @@ const help = (prefix) => {
 ┣━━━━━━━━━━━━━━
 ┃*POWERED BY AINEBOT*
 ┗━━━━━━━━━━━━━━
-
 `
 }
 exports.help = help
