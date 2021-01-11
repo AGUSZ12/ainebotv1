@@ -7,39 +7,77 @@ const help = (prefix) => {
 ┣⊱ *${prefix}info*
 ┣⊱ *${prefix}botstat*
 ┣⊱ *${prefix}lpr*
+┣⊱ *${prefix}request*
 ┣━━❀ *Maker* ❀━━
 ┣⊱ *${prefix}ocr*
 ┣⊱ *${prefix}sticker*
 ┣⊱ *${prefix}gtts*
 ┣⊱ *${prefix}toimg*
+┣━━❀ *Maker Logo* ❀━━
 ┣⊱ *${prefix}phlogo*
-┣⊱ *${prefix}quotemaker*
-┣⊱ *${prefix}ninjalogo*
-┣⊱ *${prefix}wolflogo*
-┣⊱ *${prefix}lionlogo*
-┣⊱ *${prefix}glitch*
 ┣⊱ *${prefix}text3d*
-┣━━❀ *Random Picture* ❀━━
+┣⊱ *${prefix}glitch*
+┣⊱ *${prefix}wolflogo*
+┣━━❀ *Random Picture Meme* ❀━━
 ┣⊱ *${prefix}meme*
 ┣⊱ *${prefix}memeindo*
+┣━━❀ *Random Picture Anime* ❀━━
 ┣⊱ *${prefix}waifu*
-┣⊱ *${prefix}rdmloli*
-┣⊱ *${prefix}rdmneko*
-┣⊱ *${prefix}rdmanime*
-┣⊱ *${prefix}rdmpokemon*
-┣⊱ *${prefix}rdmcars*
-┣⊱ *${prefix}rdmmotor*
-┣⊱ *${prefix}rdmcewek*
-┣⊱ *${prefix}rdmcowok*
-┣⊱ *${prefix}rdmbts*
-┣⊱ *${prefix}rdmblackpink*
-┣⊱ *${prefix}rdmcosplayjapan*
-┣⊱ *${prefix}rdmanjing*
-┣⊱ *${prefix}rdmkucing*
-┣⊱ *${prefix}rdmkatakata*
-┣⊱ *${prefix}rdmaesthetic*
-┣⊱ *${prefix}rdmquotesID*
-┣⊱ *${prefix}rdmquotesEN*
+┣⊱ *${prefix}neko*
+┣⊱ *${prefix}loli*
+┣⊱ *${prefix}nime*
+┣⊱ *${prefix}osakana*
+┣⊱ *${prefix}animegirl*
+┣⊱ *${prefix}animeboy*
+┣━━❀ *Random Picture Kendaraan* ❀━━
+┣⊱ *${prefix}cars*
+┣⊱ *${prefix}motor*
+┣━━❀ *Random Picture AlatMusik* ❀━━
+┣⊱ *${prefix}gitar*
+┣⊱ *${prefix}drum*
+┣━━❀ *Random Picture Cewek* ❀━━
+┣⊱ *${prefix}cewek*
+┣━━❀ *Random Picture Cowok* ❀━━
+┣⊱ *${prefix}cowok*
+┣━━❀ *Random Picture Csplyjapan* ❀━━
+┣⊱ *${prefix}aliga*
+┣⊱ *${prefix}liyuu*
+┣⊱ *${prefix}miluki*
+┣⊱ *${prefix}tieunhu*
+┣⊱ *${prefix}realyami*
+┣⊱ *${prefix}sakuragun*
+┣⊱ *${prefix}haodadedouya*
+┣⊱ *${prefix}cosplayjapan*
+┣━━❀ *Random Picture Animasi* ❀━━
+┣⊱ *${prefix}pokemon*
+┣⊱ *${prefix}doraemon*
+┣━━❀ *Random Picture BTS* ❀━━
+┣⊱ *${prefix}bts*
+┣⊱ *${prefix}jimin*
+┣⊱ *${prefix}minyoongi*
+┣⊱ *${prefix}kimnamjoon*
+┣⊱ *${prefix}kimseokjin*
+┣⊱ *${prefix}junghoseok*
+┣⊱ *${prefix}kimtaehyung*
+┣⊱ *${prefix}jeonjungkook*
+┣━━❀ *Random Picture BlackPink* ❀━━
+┣⊱ *${prefix}blackpink*
+┣⊱ *${prefix}lisa*
+┣⊱ *${prefix}jennie*
+┣⊱ *${prefix}kimjisoo*
+┣⊱ *${prefix}roseannepark*
+┣━━❀ *Random Picture Hewan* ❀━━
+┣⊱ *${prefix}anjing*
+┣⊱ *${prefix}kucing*
+┣⊱ *${prefix}hamster*
+┣━━❀ *Random Picture Quotes* ❀━━
+┣⊱ *${prefix}katakata*
+┣⊱ *${prefix}quotesID*
+┣⊱ *${prefix}quotesEN*
+┣━━❀ *Random Picture Aesthetic* ❀━━
+┣⊱ *${prefix}aesthetic*
+┣⊱ *${prefix}bluesky*
+┣⊱ *${prefix}flower*
 ┣━━❀ *Kerang ajaib* ❀━
 ┣⊱ *${prefix}kapankah*
 ┣⊱ *${prefix}apakah*
@@ -63,6 +101,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}persengay*
 ┣⊱ *${prefix}quotes*
 ┣⊱ *${prefix}cerpen*
+┣⊱ *${prefix}jodoh*
 ┣⊱ *${prefix}truth*
 ┣⊱ *${prefix}dare*
 ┣⊱ *${prefix}lirik*
@@ -75,9 +114,9 @@ const help = (prefix) => {
 ┣⊱ *${prefix}tagall*
 ┣⊱ *${prefix}add* [+62xx]
 ┣⊱ *${prefix}group* [buka/tutup]
-┣⊱ *${prefix}demote* [tag]
-┣⊱ *${prefix}promote* [tag]
-┣⊱ *${prefix}kick* [62xx]
+┣⊱ *${prefix}demote* [@tag]
+┣⊱ *${prefix}promote* [@tag]
+┣⊱ *${prefix}kick* [@tag]
 ┣⊱ *${prefix}listadmin*
 ┣⊱ *${prefix}simih* [1/0]
 ┣⊱ *${prefix}nsfw* [1/0]
@@ -88,6 +127,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}block*
 ┣⊱ *${prefix}unblock*
 ┣⊱ *${prefix}bc*
+┣⊱ *${prefix}bc1*
 ┣⊱ *${prefix}leave*
 ┣⊱ *${prefix}setpp*
 ┣⊱ *${prefix}setprefix*
