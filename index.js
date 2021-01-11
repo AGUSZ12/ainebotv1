@@ -475,7 +475,7 @@ client.on('group-participants-update', async (anu) => {
 		                case 'persengay':
 					gatauda = body.slice(11)
 					anu = await fetchJson(`https://arugaz.herokuapp.com/api/howbucins`, {method: 'get'})
-					reply(anu.desc'+anu.persen)
+					reply(anu.desc+anu.persen)
 					break
 				case 'quotes':
 					gatauda = body.slice(8)
