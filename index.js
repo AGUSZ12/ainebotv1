@@ -1265,9 +1265,13 @@ client.on('group-participants-update', async (anu) => {
             case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                   client.sendMessage(from, 'Tuh nomer owner ku >_<, jangan spam atau ku block kamu',MessageType.text, { quoted: mek} )
+                  break
             case 'assalamualaikum':
-                  client.sendMessage(from, 'Waalaikumsalam Warahmatullahi Wabarakatuh',MessageType.text, { quoted: mek} )
-           break    
+                  client.sendMessage(from, 'Waalaikumsalam Warahmatullahi Wabarakatuh 😇',MessageType.text, { quoted: mek} )
+                  break
+            case 'hi':
+                  client.sendMessage(from, 'Hi juga kak 😅',MessageType.text, { quoted: mek} )
+                  break  
            case 'setname':
                 if (!isGroup) return reply(mess.only.group)
 			    if (!isGroupAdmins) return reply(mess.only.admin)
