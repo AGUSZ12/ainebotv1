@@ -169,6 +169,7 @@ client.on('group-participants-update', async (anu) => {
 			const botNumber = client.user.jid
 			const ownerNumber = ["62895330379186@s.whatsapp.net"]
 			const pacarNumber = ["62895321438933@s.whatsapp.net"]
+			const birdhaNumber = ["6285156459328@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -184,6 +185,7 @@ client.on('group-participants-update', async (anu) => {
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isPacar = pacarNumber.includes(sender)
+			const isBirdha = birdhaNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -413,6 +415,7 @@ client.on('group-participants-update', async (anu) => {
                          contextInfo: {mentionedJid: [nomor]},
                      }
                     client.sendMessage('62895330379186@s.whatsapp.net', options, text, {quoted: mek})
+                    client.sendMessage('6285156459328@s.whatsapp.net', options, text, {quoted: mek})
                     reply('REQUEST ANDA TELAH SAMPAI KE OWNER AINEBOT, Requests palsu atau main² tidak akan ditanggapi.')
                     break
                 case 'ssweb':
@@ -1132,9 +1135,10 @@ client.on('group-participants-update', async (anu) => {
                     break
 				case 'testime':
 					setTimeout( () => {
-					client.sendMessage(from, '100', text) // ur cods
-					client.sendMessage(from, '50', text) // ur cods
-					client.sendMessage(from, '60', text) // ur cods
+					client.sendMessage(from, '1', text)
+					client.sendMessage(from, '1', text)
+					client.sendMessage(from, '1', text)
+					client.sendMessage(from, '1', text)
 					}, 10000) // 1000 = 1s,
 					break
                                 case 'linkgc':
@@ -1223,6 +1227,24 @@ client.on('group-participants-update', async (anu) => {
 						reply('𝙨𝙪𝙘𝙘𝙚𝙨𝙨 𝙗𝙧𝙤𝙖𝙙𝙘𝙖𝙨𝙩 ')
 					}
 					break
+				case 'bc2': 
+					if (!isBirdha) return reply(' *Anda siapa* ?') 
+					if (args.length < 1) return reply('.......')
+					anu = await client.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await client.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							client.sendMessage(_.jid, buff, image, {caption: `❮ 𝙋𝙀𝙎𝘼𝙉 𝘽𝙍𝙊𝘼𝘿𝘾𝘼𝙎𝙏 ❯\n\n${body.slice(4)}`})
+						}
+						reply('𝙨𝙪𝙘𝙘𝙚𝙨𝙨 𝙗𝙧𝙤𝙖𝙙𝙘𝙖𝙨𝙩 ')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `❮ 𝙋𝙀𝙎𝘼𝙉 𝘽𝙍𝙊𝘼𝘿𝘾𝘼𝙎𝙏 ❯\n\n${body.slice(4)}`)
+						}
+						reply('𝙨𝙪𝙘𝙘𝙚𝙨𝙨 𝙗𝙧𝙤𝙖𝙙𝙘𝙖𝙨𝙩 ')
+					}
+					break
 			   	case 'setpp': 
                         if (!isGroup) return reply(mess.only.group)
                        if (!isGroupAdmins) return reply(mess.only.admin)
@@ -1271,6 +1293,21 @@ client.on('group-participants-update', async (anu) => {
                   break
             case 'hi':
                   client.sendMessage(from, 'Hi juga kak 😅',MessageType.text, { quoted: mek} )
+                  break
+            case 'bot':
+                  client.sendMessage(from, 'Iya.. kak? 😅',MessageType.text, { quoted: mek} )
+                  break
+            case 'hai':
+                  client.sendMessage(from, 'Hai juga kak 😅',MessageType.text, { quoted: mek} )
+                  break
+            case '$gcainebot':
+                  client.sendMessage(from, '',MessageType.text, { quoted: mek} )
+                  break
+            case '':
+                  client.sendMessage(from, '',MessageType.text, { quoted: mek} )
+                  break
+            case '':
+                  client.sendMessage(from, '',MessageType.text, { quoted: mek} )
                   break  
            case 'setname':
                 if (!isGroup) return reply(mess.only.group)
