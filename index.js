@@ -284,6 +284,7 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
 				case 's&k':
+				case 'snk':
 					me = client.user
 					uptime = process.uptime()
 					teks = `*Syarat & Ketentuan Ainebot*\n1. Teks dan nama pengguna WhatsApp anda kami simpan di dalam server selama bot aktif.\n2. Data anda akan di hapus ketika bot offline.\n3. Kami tidak menyimpan gambar, video, file, audio, dan dokumen yang anda kirim.\n4. Kami tidak pernah meminta anda untuk memberikan informasi pribadi.\n5. Jika menemukan Bug/Error silahkan langsung lapor ke Owner bot.\n6. Cukup perintah 1x jika bot tidak merespon harap ulangi kembali, Jika di ulangi kembali tidak merespon, Bot tidak aktif\n7. Dilarang spam, Share virus virtex, Telpon, Video call, Kami akan blockir anda.\n8. Apapun yang anda perintah pada bot ini, *KAMI TIDAK BERTANGGUNG JAWAB!*\n\nTERIMA KASIH !~`
@@ -1148,14 +1149,6 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, '1', text)
 					}, 10000) // 1000 = 1s,
 					break
-				case 'tes time':
-					setTimeout( () => {
-					client.sendMessage(from, '1', text)
-					client.sendMessage(from, '1', text)
-					client.sendMessage(from, '1', text)
-					client.sendMessage(from, '1', text)
-					}, 10000) // 1000 = 1s,
-					break
                                 case 'linkgc':
                                 case 'linkgrup':
                                 case 'linkgroup':
@@ -1301,6 +1294,7 @@ client.on('group-participants-update', async (anu) => {
             case 'owner':
             case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
+                  client.sendMessage(from, 'Link Owner : wa.me/62895330379186',MessageType.text, { quoted: mek} )
                   client.sendMessage(from, 'Tuh nomer owner ku >_<, jangan spam atau ku block kamu',MessageType.text, { quoted: mek} )
                   break
             case 'assalamualaikum':
@@ -1317,12 +1311,6 @@ client.on('group-participants-update', async (anu) => {
                   break
             case 'gcainebot':
                   client.sendMessage(from, 'https://chat.whatsapp.com/EYGeuRbVFkfI8JrH3cNrGV',MessageType.text, { quoted: mek} )
-                  break
-            case 'I love you':
-                  client.sendMessage(from, 'I love you too ❤',MessageType.text, { quoted: mek} )
-                  break
-            case 'Aku sayang kamu':
-                  client.sendMessage(from, 'Aku juga sayang kamu ❤',MessageType.text, { quoted: mek} )
                   break  
            case 'setname':
                 if (!isGroup) return reply(mess.only.group)
