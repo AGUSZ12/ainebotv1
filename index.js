@@ -1170,6 +1170,14 @@ client.on('group-participants-update', async (anu) => {
 					}
 					mentions(teks, members_id, true)
 					break
+				case 'tagme':
+					var nom = mek.participant
+					const tag = {
+					text: `@${nom.split("@s.whatsapp.net")[0]} 𝐓𝐮𝐡 𝐝𝐚𝐡 𝐚𝐤𝐮 𝐭𝐚𝐠!`,
+					contextInfo: { mentionedJid: [nom] }
+					}
+					client.sendMessage(from, tag, text, {quoted: mek})
+					break
 				case 'clearall':
 					if (!isOwner) return reply(' *Anda siapa* ?')
 					anu = await client.chats.all()
