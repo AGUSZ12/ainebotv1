@@ -1193,8 +1193,8 @@ client.on('group-participants-update', async (anu) => {
                                         reply('https://chat.whatsapp.com/'+linkgc)
                                         break
 
-                                case prefix+'wa.me':
-                                case prefix+'wame':
+                                case 'wa.me':
+                                case 'wame':
                                        await client.reply(from, `*Neh Mhank Link Nomor Wa Lu ${pushname}*\n\nwa.me/${sender.id.replace(/[@c.us]/g, '')}\n\n*Atau*\n\napi.whatsapp.com/send?phone=${sender.id.replace(/[@c.us]/g, '')}`)
                                        break
                                case 'leaveall':
