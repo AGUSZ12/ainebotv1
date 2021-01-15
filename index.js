@@ -353,36 +353,6 @@ client.on('group-participants-update', async (anu) => {
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
                       break
-                               case 'glitch1':
-					var gh = body.slice(8)
-					var tels3 = gh.split("|")[0];
-					var tels4 = gh.split("|")[1];
-					if (args.length < 1) return reply(mess.blank)
-					reply(mess.wait)
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ttlogo?text1=${tels3}&text2=${tels4}`, {method: 'get'})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {quoted: mek})
-					break
-				case 'glitch':
-					var gh = body.slice(11)
-					var teks1 = gh.split("|")[0];
-					var teks2 = gh.split("|")[1];
-					if (args.length < 1) return reply(`teksnya mana kak? contoh ${prefix}logowolf   Aine|Cool`)
-					reply(mess.wait)
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ttlogo?text1=${tels3}&text2=${tels4}`, {method: 'get'})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {quoted: mek})
-					break
-				case 'logowolf':
-					var gh = body.slice(11)
-					var teks1 = gh.split("|")[0];
-					var teks2 = gh.split("|")[1];
-					if (args.length < 1) return reply(`teksnya mana? contoh ${prefix}logowolf Aris|Ganss`)
-					reply(mess.wait)
-					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=wolflogo1&text1=${teks1}&text2=${teks2}`, {method: 'get'})
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {quoted: mek})
-					break
                 case 'lionlogo':
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(10)
