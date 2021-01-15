@@ -187,7 +187,6 @@ client.on('group-participants-update', async (anu) => {
 			const isOwner = ownerNumber.includes(sender)
 			const isPacar = pacarNumber.includes(sender)
 			const isBirdha = birdhaNumber.includes(sender)
-                        const GroupLinkDetector = antilink.includes(chatId)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
