@@ -30,7 +30,6 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
-const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
             + 'FN:Admin Ainebot\n' 
@@ -1206,44 +1205,17 @@ client.on('group-participants-update', async (anu) => {
                                        await client.sendText(gclist.contact.id, `Maaf bot sedang pembersihan, total chat aktif : ${allChats.length}`)
                                        await client.leaveGroup(gclist.contact.id)
                                        }
-                                       client.reply(from, 'Succes leave all group!', id)
+                                       reply(from, 'Succes leave all group!', id)
                                        break
                               case 'resetlinkgroup':
-                                      if (!isGroup) return reply(from, `Fitur ini hanya bisa di gunakan dalam group`, id)
-                                      if (!isGroupAdmins) return reply(from, `Fitur ini hanya bisa di gunakan oleh admin group`, id)
-                                      if (!isBotGroupAdmins) return reply(from, `Fitur ini hanya bisa di gunakan ketika bot menjadi admin`, id)
-                                      if (isGroupMsg) {
+                                      if (!isGroup) return reply(mess.only.group)
+                                      if (!isGroupAdmins) return reply(mess.only.admin)
+                                      if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+                                      if (isGroup) {
                                       await client.revokeGroupInviteLink(groupId);
-                                      client.sendTextWithMentions(from, `Link group telah direset oleh admin group @${sender.id.replace('@c.us', '')}`)
+                                      sendTextWithMentions(from, `Link group telah direset oleh admin group @${sender.id.replace('@c.us', '')}`)
                                       }
                                       break
-        case 'antilink':
-            if (!isGroup) return client.reply(from, `Perintah ini hanya bisa di gunakan dalam group!`, id)
-            if (!isGroupAdmins) return client.reply(from, `Perintah ini hanya bisa di gunakan oleh Admin group!`, id)
-            if (!isBotGroupAdmins) return client.reply(from, `Perintah ini hanya bisa di gunakan jika Bot menjadi Admin!`, id)
-            if (args[1] == 'enable') {
-                var cek = antilink.includes(chatId);
-                if(cek){
-                    return client.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Sudah Aktif`, id) //if number already exists on database
-                } else {
-                    antilink.push(chatId)
-                    fs.writeFileSync('./lib/database/antilink.json', JSON.stringify(antilink))
-                    tobz.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Aktif`, id)
-                }
-            } else if (args[1] == 'disable') {
-                var cek = antilink.includes(chatId);
-                if(!cek){
-                    return client.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Sudah DiNonaktif`, id) //if number already exists on database
-                } else {
-                    let nixx = antilink.indexOf(chatId)
-                    antilink.splice(nixx, 1)
-                    fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-                    client.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Nonaktif`, id)
-                }
-            } else {
-                client.reply(from, `Pilih enable atau disable kak!`, id)
-            }
-            break 
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
