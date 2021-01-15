@@ -1196,25 +1196,6 @@ client.on('group-participants-update', async (anu) => {
                                 case 'wame':
                                        await client.reply(from, `*Neh Mhank Link Nomor Wa Lu ${pushname}*\n\nwa.me/${sender.id.replace(/[@c.us]/g, '')}\n\n*Atau*\n\napi.whatsapp.com/send?phone=${sender.id.replace(/[@c.us]/g, '')}`)
                                        break
-                               case 'leaveall':
-                                       if (!isOwner) return client.reply(from, 'Maaf fitur ini untuk owner kami!', id)
-                                       const allChats = await client.getAllChatIds()
-                                       const allGroups = await client.getAllGroups()
-                                       for (let gclist of allGroups) {
-                                       await client.sendText(gclist.contact.id, `Maaf bot sedang pembersihan, total chat aktif : ${allChats.length}`)
-                                       await client.leaveGroup(gclist.contact.id)
-                                       }
-                                       reply(from, 'Succes leave all group!', id)
-                                       break
-                              case 'resetlinkgroup':
-                                      if (!isGroup) return reply(mess.only.group)
-                                      if (!isGroupAdmins) return reply(mess.only.admin)
-                                      if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-                                      if (isGroup) {
-                                      await client.revokeGroupInviteLink(groupId);
-                                      sendTextWithMentions(from, `Link group telah direset oleh admin group @${sender.id.replace('@c.us', '')}`)
-                                      }
-                                      break
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
