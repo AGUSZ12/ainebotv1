@@ -47,7 +47,6 @@ blocked = []
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 const bulan = arrayBulan[moment().format('MM') - 1]
-const arg = body.substring(body.indexOf(' ') + 1)
 const isPrivate = sender.id === chat.contact.id
 const config = {
     XBOT: '🤖AINEBOT🤖', 
