@@ -29,6 +29,8 @@ const { removeBackgroundFromImageFile } = require('remove.bg')
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
+const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
             + 'FN:Admin Ainebot\n' 
@@ -45,6 +47,8 @@ blocked = []
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 const bulan = arrayBulan[moment().format('MM') - 1]
+const arg = body.substring(body.indexOf(' ') + 1)
+const isPrivate = sender.id === chat.contact.id
 const config = {
     XBOT: '🤖AINEBOT🤖', 
     instagram: 'https://instagram.com/anemio999', 
@@ -186,6 +190,7 @@ client.on('group-participants-update', async (anu) => {
 			const isOwner = ownerNumber.includes(sender)
 			const isPacar = pacarNumber.includes(sender)
 			const isBirdha = birdhaNumber.includes(sender)
+                        const GroupLinkDetector = antilink.includes(chatId)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -348,26 +353,36 @@ client.on('group-participants-update', async (anu) => {
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
                       break
-                case 'glitch':
+                               case 'glitch1':
 					var gh = body.slice(8)
 					var tels3 = gh.split("|")[0];
 					var tels4 = gh.split("|")[1];
 					if (args.length < 1) return reply(mess.blank)
 					reply(mess.wait)
-					anu = await fetchJson(`https://arugaz.my.id/api/textpro/glitchtext?text1=${tels3}&text2=${tels4}`, {method: 'get'})
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ttlogo?text1=${tels3}&text2=${tels4}`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					break
-                case 'wolflogo':
-                      if (args.length < 1) return reply('Teks nya mana?')
-                      gh = body.slice(10)
-                      gl1 = gh.split("|")[0];
-                      gl2 = gh.split("|")[1];
-                      reply(mess.wait)
-                      anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/wolf?text1=${gl1}&text2=${gl2}`, {method: 'get'})
-                      buff = await getBuffer(anu.result)
-                      client.sendMessage(from, buff, image, {quoted: mek})
-                      break
+				case 'glitch':
+					var gh = body.slice(11)
+					var teks1 = gh.split("|")[0];
+					var teks2 = gh.split("|")[1];
+					if (args.length < 1) return reply(`teksnya mana kak? contoh ${prefix}logowolf   Aine|Cool`)
+					reply(mess.wait)
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ttlogo?text1=${tels3}&text2=${tels4}`, {method: 'get'})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, image, {quoted: mek})
+					break
+				case 'logowolf':
+					var gh = body.slice(11)
+					var teks1 = gh.split("|")[0];
+					var teks2 = gh.split("|")[1];
+					if (args.length < 1) return reply(`teksnya mana? contoh ${prefix}logowolf Aris|Ganss`)
+					reply(mess.wait)
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=wolflogo1&text1=${teks1}&text2=${teks2}`, {method: 'get'})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, image, {quoted: mek})
+					break
                 case 'lionlogo':
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(10)
@@ -478,6 +493,20 @@ client.on('group-participants-update', async (anu) => {
 						reply(' *ERROR* ')
 					}
 					break
+                                case 'say':
+                                        await client.sendMessage(id, value, MessageType.text)
+                                        break
+
+				case 'nulis':
+				case 'tulis':
+					if (args.length < 1) return reply('Aku di suruh nulis apa kak? Setan kah!')
+					teks = body.slice(7)
+					reply(mess.wait)
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/nulis?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					buff = await getBuffer(anu.result)
+					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
+					break
                                 case 'bucin':
 			 		gatauda = body.slice(7)
 					anu = await fetchJson(`https://arugaz.herokuapp.com/api/howbucins`, {method: 'get'})
@@ -496,6 +525,21 @@ client.on('group-participants-update', async (anu) => {
 				case 'katacinta':
 					gatauda = body.slice(8)
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/katacinta`, {method: 'get'})
+					reply(anu.result)
+					break
+				case 'katabijak':
+					gatauda = body.slice(8)
+					anu = await fetchJson(`https://arugaz.my.id/api/random/text/katabijak`, {method: 'get'})
+					reply(anu.result)
+					break
+				case 'faktaunik':
+					gatauda = body.slice(8)
+					anu = await fetchJson(`https://arugaz.my.id/api/random/text/faktaunik`, {method: 'get'})
+					reply(anu.result)
+					break
+				case 'pantun':
+					gatauda = body.slice(8)
+					anu = await fetchJson(`https://arugaz.my.id/api/random/text/pantun`, {method: 'get'})
 					reply(anu.result)
 					break
                                case 'jodoh':                    
@@ -537,6 +581,15 @@ client.on('group-participants-update', async (anu) => {
 					tels = body.slice(8)					
 					anu = await fetchJson(`https://arugaz.herokuapp.com/api/wikien?q=${tels}`, {method: 'get'})
 					reply(anu.result)
+					break
+			        case 'igstalk':
+					if (args.length < 1) return reply('Masukan username mu!!')
+					ige = body.slice(9)
+					reply(mess.wait)
+					anu = await fetchJson(`http://arugaz.my.id/api/media/stalkig?user=${ige}`, {method: 'get'})
+					buffer = await getBuffer(anu.result.profile_picture)
+					hasil = `User Ditemukan!!\n\n*➸ Username :* ${anu.result.username}\n*➸ Nama :* ${anu.result.fullname}\n*➸ Followers :* ${anu.result.followers}\n*➸ Followings :* ${anu.result.followings}\n*➸ Bio :* ${anu.result.biography}`
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
 					break
                 case 'infogempa':
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/infogempa`, {method: 'get'})
@@ -958,11 +1011,25 @@ client.on('group-participants-update', async (anu) => {
 					hasil = `*Judul ➼* ${anu.title}\n*Filesize ➼* ${anu.filesize}\n*Tipe ➼* ${anu.ext}\n*Link ➼* ${anu.result}`					
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
 					break
+                case 'bplogo':
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/blackpink?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
                 case 'text3d':
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(8)}`
-                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 10 kalimat', text, {quoted: mek})
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
                                         buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
+                case 'thunder':
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/thunder?text=${teks}`, {method: 'get'})
                                         client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	        break
                 case 'shorturl':
@@ -1158,6 +1225,57 @@ client.on('group-participants-update', async (anu) => {
                                         linkgc = await client.groupInviteCode(from)
                                         reply('https://chat.whatsapp.com/'+linkgc)
                                         break
+
+                                case prefix+'wa.me':
+                                case prefix+'wame':
+                                       await client.reply(from, `*Neh Mhank Link Nomor Wa Lu ${pushname}*\n\nwa.me/${sender.id.replace(/[@c.us]/g, '')}\n\n*Atau*\n\napi.whatsapp.com/send?phone=${sender.id.replace(/[@c.us]/g, '')}`)
+                                       break
+                               case 'leaveall':
+                                       if (!isOwner) return client.reply(from, 'Maaf fitur ini untuk owner kami!', id)
+                                       const allChats = await client.getAllChatIds()
+                                       const allGroups = await client.getAllGroups()
+                                       for (let gclist of allGroups) {
+                                       await client.sendText(gclist.contact.id, `Maaf bot sedang pembersihan, total chat aktif : ${allChats.length}`)
+                                       await client.leaveGroup(gclist.contact.id)
+                                       }
+                                       client.reply(from, 'Succes leave all group!', id)
+                                       break
+                              case 'resetlinkgroup':
+                                      if (!isGroup) return reply(from, `Fitur ini hanya bisa di gunakan dalam group`, id)
+                                      if (!isGroupAdmins) return reply(from, `Fitur ini hanya bisa di gunakan oleh admin group`, id)
+                                      if (!isBotGroupAdmins) return reply(from, `Fitur ini hanya bisa di gunakan ketika bot menjadi admin`, id)
+                                      if (isGroupMsg) {
+                                      await client.revokeGroupInviteLink(groupId);
+                                      client.sendTextWithMentions(from, `Link group telah direset oleh admin group @${sender.id.replace('@c.us', '')}`)
+                                      }
+                                      break
+        case 'antilink':
+            if (!isGroup) return client.reply(from, `Perintah ini hanya bisa di gunakan dalam group!`, id)
+            if (!isGroupAdmins) return client.reply(from, `Perintah ini hanya bisa di gunakan oleh Admin group!`, id)
+            if (!isBotGroupAdmins) return client.reply(from, `Perintah ini hanya bisa di gunakan jika Bot menjadi Admin!`, id)
+            if (args[1] == 'enable') {
+                var cek = antilink.includes(chatId);
+                if(cek){
+                    return client.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Sudah Aktif`, id) //if number already exists on database
+                } else {
+                    antilink.push(chatId)
+                    fs.writeFileSync('./lib/database/antilink.json', JSON.stringify(antilink))
+                    tobz.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Aktif`, id)
+                }
+            } else if (args[1] == 'disable') {
+                var cek = antilink.includes(chatId);
+                if(!cek){
+                    return client.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Sudah DiNonaktif`, id) //if number already exists on database
+                } else {
+                    let nixx = antilink.indexOf(chatId)
+                    antilink.splice(nixx, 1)
+                    fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+                    client.reply(from, `*「 ANTI GROUP LINK 」*\nStatus : Nonaktif`, id)
+                }
+            } else {
+                client.reply(from, `Pilih enable atau disable kak!`, id)
+            }
+            break 
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -1179,7 +1297,7 @@ client.on('group-participants-update', async (anu) => {
 					client.sendMessage(from, tag, text, {quoted: mek})
 					break
 				case 'clearall':
-					if (!isOwner) return reply(' *Anda siapa* ?')
+					if (!isOwner) return reply('Maaf fitur ini untuk owner kami!')
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
@@ -1193,9 +1311,33 @@ client.on('group-participants-update', async (anu) => {
 					client.blockUser (`${body.slice(7)}@c.us`, "add")
 					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝗹𝗼𝗸𝗶𝗿 ${body.slice(7)}@c.us`, text)
 					break
-                    case 'unblock':
+			       case 'block':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isBirdha) return reply(mess.only.ownerB)
+					client.blockUser (`${body.slice(7)}@c.us`, "add")
+					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝗹𝗼𝗸𝗶𝗿 ${body.slice(7)}@c.us`, text)
+					break
+			       case 'block':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isPacar) return reply(mess.only.ownerB)
+					client.blockUser (`${body.slice(7)}@c.us`, "add")
+					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝗹𝗼𝗸𝗶𝗿 ${body.slice(7)}@c.us`, text)
+					break
+                               case 'unblock':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isOwner) return reply(mess.only.ownerB)
+				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
+					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝘂𝗸𝗮 ${body.slice(9)}@c.us`, text)
+				break                    
+                               case 'unblock':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isBirdha) return reply(mess.only.ownerB)
+				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
+					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝘂𝗸𝗮 ${body.slice(9)}@c.us`, text)
+				break
+                               case 'unblock':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isPacar) return reply(mess.only.ownerB)
 				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
 					client.sendMessage(from, `𝗽𝗲𝗿𝗶𝗻𝘁𝗮𝗵 𝗗𝗶𝘁𝗲𝗿𝗶𝗺𝗮, 𝗺𝗲𝗺𝗯𝘂𝗸𝗮 ${body.slice(9)}@c.us`, text)
 				break
@@ -1208,7 +1350,7 @@ client.on('group-participants-update', async (anu) => {
                                         }
                                         break
 				case 'bc': 
-					if (!isOwner) return reply(' *Anda siapa* ?') 
+					if (!isOwner) return reply('Maaf fitur ini untuk owner kami!') 
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
@@ -1226,7 +1368,7 @@ client.on('group-participants-update', async (anu) => {
 					}
 					break
 				case 'bc1': 
-					if (!isPacar) return reply(' *Anda siapa* ?') 
+					if (!isPacar) return reply('Maaf fitur ini untuk owner kami!') 
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
@@ -1244,7 +1386,7 @@ client.on('group-participants-update', async (anu) => {
 					}
 					break
 				case 'bc2': 
-					if (!isBirdha) return reply(' *Anda siapa* ?') 
+					if (!isBirdha) return reply('Maaf fitur ini untuk owner kami!') 
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
@@ -1320,6 +1462,9 @@ client.on('group-participants-update', async (anu) => {
             case 'gcainebot':
                   client.sendMessage(from, 'https://chat.whatsapp.com/EYGeuRbVFkfI8JrH3cNrGV',MessageType.text, { quoted: mek} )
                   break  
+            case `assalamualaikum`:
+                  client.reply(from, `Waalaikumsalam ${pushname}:)`)
+                  break
            case 'setname':
                 if (!isGroup) return reply(mess.only.group)
 			    if (!isGroupAdmins) return reply(mess.only.admin)
@@ -1475,7 +1620,7 @@ client.on('group-participants-update', async (anu) => {
 					}
 				case 'clone':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(' *Anda siapa?* ') 
+					if (!isOwner) return reply('Maaf fitur ini untuk owner kami!') 
 					if (args.length < 1) return reply(' *TAG YANG MAU DI CLONE!!!* ')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag cvk')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
