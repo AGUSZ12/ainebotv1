@@ -1058,7 +1058,7 @@ client.on('group-participants-update', async (anu) => {
               	               if (args.length < 1) return reply('teksnya mana kak?')
                                         teks = `${body.slice(8)}`
                                         if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
-                                        buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/thunder?text=${teks}`, {method: 'get'})
+                                        buff = await getBuffer(`https://arugaz.my.id/api/textpro/thundertext?text=${teks}`, {method: 'get'})
                                         client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	        break
                 case 'shorturl':
