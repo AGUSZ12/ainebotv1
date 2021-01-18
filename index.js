@@ -548,7 +548,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'wiki':
 					if (args.length < 1) return reply('teks nya mana kak?')
 					tels = body.slice(6)					
-					anu = await fetchJson(`https://arugaz.herokuapp.com/api/wiki?q=${tels}`, {method: 'get'})
+					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/wiki?q=${tels}`, {method: 'get'})
 					reply(anu.result)
 					break	
 				case 'wikien':
