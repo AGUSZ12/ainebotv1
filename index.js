@@ -332,9 +332,19 @@ client.on('group-participants-update', async (anu) => {
 					var gh = body.slice(9)
 					var gbl1 = gh.split("|")[0];
 					var gbl2 = gh.split("|")[1];
-					if (args.length < 1) return reply('Teksnya mana um')
+					if (args.length < 1) return reply('Teksnya mana kak')
 					reply(mess.wait)
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/textpro?theme=pornhub&text1=${gbl1}&text2=${gbl2}`, {method: 'get'})
+					anu = await fetchJson(`https://arugaz.my.id/api/textpro/pornhub?text1=${gbl1}&text2=${gbl2}`, {method: 'get'})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, image, {quoted: mek})
+					break
+                 case 'glitch':
+					var gh = body.slice(9)
+					var gbl1 = gh.split("|")[0];
+					var gbl2 = gh.split("|")[1];
+					if (args.length < 1) return reply('Teksnya mana kak')
+					reply(mess.wait)
+					anu = await fetchJson(`https://arugaz.my.id/api/textpro/glitchtext?text1=${gbl1}&text2=${gbl2}`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					break
@@ -484,8 +494,8 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'quotes':
 					gatauda = body.slice(8)
-					anu = await fetchJson(`https://arugaz.herokuapp.com/api/randomquotes`, {method: 'get'})
-					reply(anu.quotes)
+					anu = await fetchJson(`https://arugaz.my.id/api/random/text/quotes`, {method: 'get'})
+					reply(anu.result.quote)
 					break
 				case 'katacinta':
 					gatauda = body.slice(8)
@@ -525,13 +535,13 @@ client.on('group-participants-update', async (anu) => {
 				case 'chord':
 					if (args.length < 1) return reply('teks nya mana kak?')
 					tels = body.slice(7)
-					anu = await fetchJson(`https://arugaz.herokuapp.com/api/chord?q=${tels}`, {method: 'get'})
+					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/chord?q=${tels}`, {method: 'get'})
 					reply(anu.result)
 					break
 			        case 'waifu':
 					gatauda = body.slice(7)
 					reply(mess.wait)
-					anu = await fetchJson(`https://arugaz.herokuapp.com/api/nekonime`, {method: 'get'})
+					anu = await fetchJson(`https://alfians-api.herokuapp.com/api/nekonime`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image,{quoted: mek})
 					break
@@ -1059,6 +1069,20 @@ client.on('group-participants-update', async (anu) => {
                                         teks = `${body.slice(8)}`
                                         if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
                                         buff = await getBuffer(`https://arugaz.my.id/api/textpro/thundertext?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
+                case 'blood':
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`https://arugaz.my.id/api/textpro/bloodtext?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
+                case 'cloudsky':
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`https://arugaz.my.id/api/textpro/cloudsky?text=${teks}`, {method: 'get'})
                                         client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	        break
                 case 'shorturl':
