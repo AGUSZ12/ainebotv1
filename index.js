@@ -321,7 +321,7 @@ client.on('group-participants-update', async (anu) => {
 					var quote = gh.split("|")[0];
 					var wm = gh.split("|")[1];
 					var bg = gh.split("|")[2];
-					const pref = `Usage: \n${prefix}quotemaker |watermark|theme\n\nEx :\n${prefix}quotemaker ini contoh|bicit|random`
+					const pref = `Usage: \n${prefix}quotemaker teks|watermark|theme\n\nEx :\n${prefix}quotemaker ini contoh|bicit|random`
 					if (args.length < 1) return reply(pref)
 					reply(mess.wait)
 					anu = await fetchJson(`https://terhambar.com/aw/qts/?kata=${quote}&author=${wm}&tipe=${bg}`, {method: 'get'})
