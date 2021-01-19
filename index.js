@@ -550,6 +550,12 @@ client.on('group-participants-update', async (anu) => {
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, image,{quoted: mek})
 					break
+				case 'tafsirmimpi':
+					if (args.length < 1) return reply('teks nya mana kak?')
+					tels = body.slice(6)					
+					anu = await fetchJson(`https://arugaz.my.id/api/primbon/tafsirmimpi?mimpi=${tels}`, {method: 'get'})
+					reply(anu.result.hasil)
+					break
 				case 'wiki':
 					if (args.length < 1) return reply('teks nya mana kak?')
 					tels = body.slice(6)					
@@ -796,7 +802,15 @@ client.on('group-participants-update', async (anu) => {
 					pok = await getBuffer(nimek)
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
-                case 'katabijak':
+                case 'motivasi':
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=kata%20motivasi`, {method: 'get'})
+					reply(mess.wait)
+					var n = JSON.parse(JSON.stringify(anu));
+					var nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+					break
+                case 'kehidupan':
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=kata%20kata%20bijak%20kehidupan`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
@@ -804,7 +818,7 @@ client.on('group-participants-update', async (anu) => {
 					pok = await getBuffer(nimek)
 					client.sendMessage(from, pok, image, { quoted: mek })
 					break
-                case 'quotesislami':
+                case 'islami':
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=quotes%20islami`, {method: 'get'})
 					reply(mess.wait)
 					var n = JSON.parse(JSON.stringify(anu));
@@ -1104,6 +1118,13 @@ client.on('group-participants-update', async (anu) => {
                                         buff = await getBuffer(`https://arugaz.my.id/api/textpro/sandwrite?text=${teks}`, {method: 'get'})
                                         client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	        break
+                case 'matrix':
+              	               if (args.length < 1) return reply('teksnya mana kak?')
+                                        teks = `${body.slice(8)}`
+                                        if (teks.length > 10) return client.sendMessage(from, 'Teksnya kepanjangan, Maksimal 5 kalimat', text, {quoted: mek})
+                                        buff = await getBuffer(`https://arugaz.my.id/api/textpro/matrixtext?text=${teks}`, {method: 'get'})
+                                        client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
+			     	        break
                 case 'shorturl':
                     anu = await fetchJson(`https://tobz-api.herokuapp.com/api/shorturl?url=${body.slice(10)}`)
 			        hasil = `${anu.result}`
@@ -1292,6 +1313,7 @@ client.on('group-participants-update', async (anu) => {
                                 case 'linkgrup':
                                 case 'linkgroup':
                                         if (!isGroup) return reply(mess.only.group)
+					if (!isOwner) return reply(mess.only.ownerB)
                                         if (!isGroupAdmins) return reply(mess.only.admin)
                                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
                                         linkgc = await client.groupInviteCode(from)
@@ -1299,6 +1321,7 @@ client.on('group-participants-update', async (anu) => {
                                         break
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -1326,7 +1349,9 @@ client.on('group-participants-update', async (anu) => {
 					}
 					reply('𝗰𝗹𝗲𝗮𝗿 𝗮𝗹𝗹 𝘀𝘂𝗸𝘀𝗲𝘀 𝘆𝗮𝗵  :)')
 					break
-			       case 'block':
+                               case 'banned':
+                               case 'ban':
+                               case 'block':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isOwner) return reply(mess.only.ownerB)
 					client.blockUser (`${body.slice(7)}@c.us`, "add")
@@ -1428,6 +1453,7 @@ client.on('group-participants-update', async (anu) => {
                         if (!isGroup) return reply(mess.only.group)
                        if (!isGroupAdmins) return reply(mess.only.admin)
                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+			if (!isOwner) return reply(mess.only.ownerB) 
                        media = await client.downloadAndSaveMediaMessage(mek)
                          await client.updateProfilePicture (from, media)
                         reply('𝗦𝘂𝗸𝘀𝗲𝘀 𝗺𝗲𝗻𝗴𝗴𝗮𝗻𝘁𝗶 𝗶𝗰𝗼𝗻 𝗚𝗿𝘂𝗽')
@@ -1436,6 +1462,7 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+			                if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('𝗽𝗮𝘀𝘁𝗶 𝘆𝗮𝗻𝗴 𝗺𝗮𝘂 𝗱𝗶 𝗮𝗱𝗱 𝗮𝗻𝗮𝗸 𝗽𝘂𝗻𝗴𝘂𝘁?')
 					if (args[0].startsWith('08')) return reply('𝗚𝘂𝗻𝗮𝗸𝗮𝗻 𝗸𝗼𝗱𝗲 𝗻𝗲𝗴𝗮𝗿𝗮 ')
 					try {
@@ -1452,6 +1479,7 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+			                if (!isOwner) return reply(mess.only.ownerB)
 					if (args[0] === 'buka') {
 					    reply(`𝗕𝗲𝗿𝗵𝗮𝘀𝗶𝗹 𝗠𝗲𝗺𝗯𝘂𝗸𝗮 𝗚𝗿𝗼𝘂𝗽`)
 						client.groupSettingChange(from, GroupSettingChange.messageSend, false)
@@ -1504,6 +1532,7 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('𝗧𝗮𝗴 𝘁𝗮𝗿𝗴𝗲𝘁 𝘆𝗮𝗻𝗴 𝗶𝗻𝗴𝗶𝗻 𝗱𝗶 𝘁𝗲𝗻𝗱𝗮𝗻𝗴!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1523,6 +1552,7 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('𝗧𝗮𝗴 𝘁𝗮𝗿𝗴𝗲𝘁 𝘆𝗮𝗻𝗴 𝗶𝗻𝗴𝗶𝗻 𝗱𝗶 𝘁𝗲𝗻𝗱𝗮𝗻𝗴!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1542,7 +1572,7 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!isOwner) return reply('Maaf fitur ini untuk owner atau admin grup kami!') 
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('𝗧𝗮𝗴 𝘁𝗮𝗿𝗴𝗲𝘁 𝘆𝗮𝗻𝗴 𝗶𝗻𝗴𝗶𝗻 𝗱𝗶 𝘁𝗲𝗻𝗱𝗮𝗻𝗴!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1560,7 +1590,7 @@ client.on('group-participants-update', async (anu) => {
 					break
 				case 'listadmin':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply('Maaf fitur ini untuk owner atau admin grup kami!') 
+					if (!isOwner) return reply(mess.only.ownerB)
 					teks = `𝗟𝗶𝘀𝘁 𝗮𝗱𝗺𝗶𝗻 𝗼𝗳 𝗴𝗿𝗼𝘂𝗽 *${groupMetadata.subject}*\n𝗧𝗼𝘁𝗮𝗹 : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
@@ -1594,7 +1624,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'simih':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply('Maaf fitur ini untuk owner atau admin grup kami!') 
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('Boo :𝘃')
 					if (Number(args[0]) === 1) {
 						if (isSimi) return reply('𝘀𝘂𝗱𝗮𝗵 𝗮𝗸𝘁𝗶𝗳 !!!')
@@ -1612,7 +1642,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'nsfw':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply('Maaf fitur ini untuk owner atau admin grup kami!') 
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('Boo :𝘃')
 					if (Number(args[0]) === 1) {
 						if (isNsfw) return reply('𝘀𝘂𝗱𝗮𝗵 𝗮𝗸𝘁𝗶𝗳 !!')
@@ -1630,7 +1660,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply('Maaf fitur ini untuk owner atau admin grup kami!') 
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('𝘀𝘂𝗱𝗮𝗵 𝗮𝗸𝘁𝗶𝗳 !!!')
@@ -1646,7 +1676,7 @@ client.on('group-participants-update', async (anu) => {
 					}
 				case 'clone':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply('Maaf fitur ini untuk owner atau admin grup kami!') 
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply(' *TAG YANG MAU DI CLONE!!!* ')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Sudah berhasil!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
