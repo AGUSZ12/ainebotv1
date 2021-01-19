@@ -1638,7 +1638,7 @@ client.on('group-participants-update', async (anu) => {
 						if (isSimi) return reply('*SUDAH AKTIF !!!*')
 						samih.push(from)
 						fs.writeFileSync('./src/simi.json', JSON.stringify(samih))
-						reply('*(SUKSES)* Mengaktifkan fitur simi di group ini*')
+						reply('*(SUKSES)* *Mengaktifkan fitur simi di group ini*')
 					} else if (Number(args[0]) === 0) {
 						samih.splice(from, 1)
 						fs.writeFileSync('./src/simi.json', JSON.stringify(samih))
@@ -1656,7 +1656,7 @@ client.on('group-participants-update', async (anu) => {
 						if (isNsfw) return reply('*SUDAH AKTIF !!!*')
 						nsfw.push(from)
 						fs.writeFileSync('./src/nsfw.json', JSON.stringify(nsfw))
-						reply('*(SUKSES)* Mengaktifkan fitur nsfw di group ini*')
+						reply('*(SUKSES)* *Mengaktifkan fitur nsfw di group ini*')
 					} else if (Number(args[0]) === 0) {
 						nsfw.splice(from, 1)
 						fs.writeFileSync('./src/nsfw.json', JSON.stringify(nsfw))
