@@ -151,7 +151,7 @@ client.on('group-participants-update', async (anu) => {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: '⏳ *WAIT* *Lagi proses!',
+				wait: '⏳ *WAIT* *Lagi proses!*',
 				success: '️ ✔  *Success* 🖤',
 				error: {
 					stick: 'Yah gagal ;(, coba ulangi ^_^',
