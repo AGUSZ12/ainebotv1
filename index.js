@@ -1321,7 +1321,6 @@ client.on('group-participants-update', async (anu) => {
                                 case 'linkgrup':
                                 case 'linkgroup':
                                         if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
                                         if (!isGroupAdmins) return reply(mess.only.admin)
                                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
                                         linkgc = await client.groupInviteCode(from)
@@ -1329,7 +1328,6 @@ client.on('group-participants-update', async (anu) => {
                                         break
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -1470,7 +1468,6 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-			                if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('*Pasti yang mau di add anak pungut iya?* 🤭')
 					if (args[0].startsWith('08')) return reply('*Gunakan kode negara* ')
 					try {
@@ -1487,7 +1484,6 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-			                if (!isOwner) return reply(mess.only.ownerB)
 					if (args[0] === 'buka') {
 					    reply(`*Berhasil Membuka Group*`)
 						client.groupSettingChange(from, GroupSettingChange.messageSend, false)
@@ -1540,7 +1536,6 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Tag target yang ingin di turunkan admin group!*')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1560,7 +1555,6 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Tag target yang ingin di jadikan admin group!*')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1580,7 +1574,6 @@ client.on('group-participants-update', async (anu) => {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('*Tag target yang ingin di tendang!*')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
@@ -1632,7 +1625,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'simih':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isSimi) return reply('*SUDAH AKTIF !!!*')
@@ -1650,7 +1642,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'nsfw':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isNsfw) return reply('*SUDAH AKTIF !!!*')
@@ -1668,7 +1659,6 @@ client.on('group-participants-update', async (anu) => {
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isOwner) return reply(mess.only.ownerB)
 					if (args.length < 1) return reply('Aktifkan dulu iya kak!')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('*SUDAH AKTIF !!!*')
