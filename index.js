@@ -384,7 +384,7 @@ client.on('group-participants-update', async (anu) => {
 					teks = body.slice(7)
 					anu = await fetchJson(`http://scrap.terhambar.com/lirik?word=${teks}`, {method: 'get'})
 					reply('*Lirik lagu* 🎶'+teks+' 🎶 :\n\n\n'+anu.result.lirik)
-					break
+					break 
 				case 'anime':
 					teks = body.slice(7)
 					anu = await fetchJson(`https://mnazria.herokuapp.com/api/anime?query=${teks}`, {method: 'get'})
